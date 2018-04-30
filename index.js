@@ -15,7 +15,9 @@ class DialogInput extends React.Component{
         animationType="fade"
         transparent={true}
         visible={this.props.isDialogVisible}
-        >
+	onRequestClose={() => {
+	  this.props.closeDialog();
+	}}>
         <View style={styles.container}>
           <View style={styles.modal_container}>
             <View style={styles.modal_body}>

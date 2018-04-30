@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import DialogInput from 'react-native-alert-input';
+import DialogInput from 'react-native-dialog-input';
 
 export default class App extends React.Component {
   constructor(props){
