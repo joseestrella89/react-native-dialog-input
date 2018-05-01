@@ -15,7 +15,7 @@ npm install --save react-native-dialog-input
 ## Usage
 
 ```javascript
-import DialogInput from 'react-native-alert-input';
+import DialogInput from 'react-native-dialog-input';
 ...
 <DialogInput isDialogVisible={this.state.isDialogVisible}
             title={"DialogInput 1"}
@@ -26,3 +26,20 @@ import DialogInput from 'react-native-alert-input';
 </DialogInput>
 ...
 ```
+## Properties
+
+ name                  | description                                 | type     
+:--------------------- |:------------------------------------------- | --------
+ isDialogVisible       | Condition to show or hide the DialogInput   |   Boolean
+ title                 | Title to show in the DialogInput            |   String (OPTIONAL)
+ message               | Message to show in the DialogInput          |   String (OPTIONAL)
+ hintInput             | Text hint to show in the TextInput          |   String (OPTIONAL)
+
+## Methods
+
+ name           | description                                        | returns
+:-------------- |:-------------------------------------------------- | -------:
+ submitInput()  | Event fired when the user press the SUBMIT button  |  String
+ closeDialog()  | Event fired when the user press the CLOSE button   |    -
+
+
