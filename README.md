@@ -41,5 +41,3 @@ import DialogInput from 'react-native-dialog-input';
 :-------------- |:-------------------------------------------------- | -------:
  submitInput()  | Event fired when the user press the SUBMIT button  |  String
  closeDialog()  | Event fired when the user press the CLOSE button   |    -
-
-

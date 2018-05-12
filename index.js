@@ -15,9 +15,9 @@ class DialogInput extends React.Component{
         animationType="fade"
         transparent={true}
         visible={this.props.isDialogVisible}
-	onRequestClose={() => {
-	  this.props.closeDialog();
-	}}>
+      	onRequestClose={() => {
+      	  this.props.closeDialog();
+      	}}>
         <View style={styles.container}>
           <View style={styles.modal_container}>
             <View style={styles.modal_body}>
@@ -36,7 +36,7 @@ class DialogInput extends React.Component{
                 }}>
                 <Text style={styles.btn_modal_left}>{(Platform.OS === 'ios' ? 'Cancel' : 'CANCEL')}</Text>
               </TouchableOpacity>
-	      <View style={styles.divider_btn}></View>
+	            <View style={styles.divider_btn}></View>
               <TouchableOpacity  style={styles.touch_modal}
                 onPress={() => {
                   this.props.submitInput(this.state.inputModal);
@@ -133,7 +133,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
       },
       android: {
-        paddingTop: 8,
+        marginTop: 8,
+        borderBottomWidth: 2,
+        borderColor: '#009688',
       },
     }),
   },
@@ -216,4 +218,3 @@ const styles = StyleSheet.create({
   },
 });
 export default DialogInput;
-
