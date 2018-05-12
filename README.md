@@ -4,7 +4,7 @@ Dialog with input for React Native on iOS and Android.
 ## Examples
 
 ![React Native Dialog Input iOS](https://res.cloudinary.com/joseestrella/image/upload/c_scale,w_279/v1525120807/dialog-ios.png)
-![React Native Dialog Input Android](https://res.cloudinary.com/joseestrella/image/upload/c_limit,w_279/v1525120806/dialog-android.png)
+![React Native Dialog Input Android](https://res.cloudinary.com/joseestrella/image/upload/c_limit,w_279/v1526156639/dialog-android.png)
 
 ## Setup
 
