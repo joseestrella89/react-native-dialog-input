@@ -12,8 +12,8 @@ class DialogInput extends React.Component{
     let hintInput = this.props.hintInput || '';
 
     let textProps = this.props.textInputProps || null;
-    let modalBackgroundStyleProps = this.props.modalBackgroundStyle || {};
     let modalStyleProps = this.props.modalStyle || {};
+    let dialogStyleProps = this.props.dialogStyle || {};
     var cancelText = this.props.cancelText || 'Cancel';
     var submitText = this.props.submitText || 'Submit';
     cancelText = (Platform.OS === 'ios')? cancelText:cancelText.toUpperCase();
@@ -27,8 +27,8 @@ class DialogInput extends React.Component{
       	onRequestClose={() => {
       	  this.props.closeDialog();
       	}}>
-        <View style={[styles.container,{...modalBackgroundStyleProps}]}>
-          <View style={[styles.modal_container,{...modalStyleProps}]}>
+        <View style={[styles.container, {...modalStyleProps}]}>
+          <View style={[styles.modal_container, {...dialogStyleProps}]}>
             <View style={styles.modal_body}>
               <Text style={styles.title_modal}>{title}</Text>
               <Text style={[this.props.message ? styles.message_modal : {height:0} ]}>{this.props.message}</Text>
