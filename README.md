@@ -34,12 +34,7 @@ import DialogInput from 'react-native-dialog-input';
  title                 | Title to show in the DialogInput            |   String (OPTIONAL)
  message               | Message to show in the DialogInput          |   String (OPTIONAL)
  hintInput             | Text hint to show in the TextInput          |   String (OPTIONAL)
- textInputProps        | Additional properties to add to the         |   Object (OPTIONAL)
-                       | TextInput.   In the form:                   |
-                       | textInputProps={{autoCorrect:false}}        |
-                       | Supports autoCorrect, autoCapitalize        |
-                       | clearButtonMode, clearTextOnFocus           |
-                       | keyboardType                                |
+ textInputProps        | Additional properties to add to the TextInput.   In the form: textInputProps={{autoCorrect:false}}  Supports autoCorrect, autoCapitalize, clearButtonMode, clearTextOnFocus keyboardType           |    Object (OPTIONAL)
 modalBackgroundStyle   | Styles for the modal background             |   Object (OPTIONAL)
 modalStyle             | Styles for the modal                        |   Object (OPTIONAL)
 cancelText             | Replacement text for the Cancel button      |   String (OPTIONAL)
