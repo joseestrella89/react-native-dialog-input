@@ -10,6 +10,15 @@ class DialogInput extends React.Component{
   render(){
     let title = this.props.title || '';
     let hintInput = this.props.hintInput || '';
+
+    let textProps = this.props.textInputProps || null;
+    let modalStyleProps = this.props.modalStyle || {};
+    let dialogStyleProps = this.props.dialogStyle || {};
+    var cancelText = this.props.cancelText || 'Cancel';
+    var submitText = this.props.submitText || 'Submit';
+    cancelText = (Platform.OS === 'ios')? cancelText:cancelText.toUpperCase();
+    submitText = (Platform.OS === 'ios')? submitText:submitText.toUpperCase();
+
     return(
       <Modal
         animationType="fade"
@@ -18,12 +27,17 @@ class DialogInput extends React.Component{
       	onRequestClose={() => {
       	  this.props.closeDialog();
       	}}>
-        <View style={styles.container}>
-          <View style={styles.modal_container}>
+        <View style={[styles.container, {...modalStyleProps}]}>
+          <View style={[styles.modal_container, {...dialogStyleProps}]}>
             <View style={styles.modal_body}>
               <Text style={styles.title_modal}>{title}</Text>
               <Text style={[this.props.message ? styles.message_modal : {height:0} ]}>{this.props.message}</Text>
               <TextInput style={styles.input_container}
+                autoCorrect={(textProps && textProps.autoCorrect==false)?false:true}
+                autoCapitalize={(textProps && textProps.autoCapitalize)?textProps.autoCapitalize:'none'}
+                clearButtonMode={(textProps && textProps.clearButtonMode)?textProps.clearButtonMode:'never'}
+                clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
+                keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
                 underlineColorAndroid='transparent'
                 placeholder={hintInput}
                 onChangeText={(inputModal) => this.setState({inputModal})}
@@ -34,14 +48,14 @@ class DialogInput extends React.Component{
                 onPress={() => {
                   this.props.closeDialog();
                 }}>
-                <Text style={styles.btn_modal_left}>{(Platform.OS === 'ios' ? 'Cancel' : 'CANCEL')}</Text>
+                <Text style={styles.btn_modal_left}>{cancelText}</Text>
               </TouchableOpacity>
 	            <View style={styles.divider_btn}></View>
               <TouchableOpacity  style={styles.touch_modal}
                 onPress={() => {
                   this.props.submitInput(this.state.inputModal);
                 }}>
-                <Text style={styles.btn_modal_right}>{(Platform.OS === 'ios' ? 'Submit' : 'SUBMIT')}</Text>
+                <Text style={styles.btn_modal_right}>{submitText}</Text>
               </TouchableOpacity>
             </View>
           </View>
