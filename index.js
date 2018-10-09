@@ -10,6 +10,7 @@ class DialogInput extends React.Component{
   render(){
     let title = this.props.title || '';
     let hintInput = this.props.hintInput || '';
+    let value = this.props.value || '';
 
     let textProps = this.props.textInputProps || null;
     let modalStyleProps = this.props.modalStyle || {};
@@ -41,6 +42,7 @@ class DialogInput extends React.Component{
                 underlineColorAndroid='transparent'
                 placeholder={hintInput}
                 onChangeText={(inputModal) => this.setState({inputModal})}
+		value={value}
                 />
             </View>
             <View style={styles.btn_container}>
