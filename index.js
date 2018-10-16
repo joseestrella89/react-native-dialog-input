@@ -5,7 +5,9 @@ import { StyleSheet, Text, View, Modal, TextInput, TouchableOpacity,
 class DialogInput extends React.Component{
   constructor(props){
     super(props);
-    this.state = {inputModal:''}
+    this.state = {
+      inputModal: props.value || ''
+    }
   }
   render(){
     let title = this.props.title || '';
