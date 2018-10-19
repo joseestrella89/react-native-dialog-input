@@ -44,6 +44,7 @@ class DialogInput extends React.Component{
                 placeholder={hintInput}
                 onChangeText={(inputModal) => this.setState({inputModal})}
 		value={this.state.inputModal}
+		autoFocus={true}
                 />
             </View>
             <View style={styles.btn_container}>
