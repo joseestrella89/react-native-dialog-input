@@ -5,13 +5,12 @@ import { StyleSheet, Text, View, Modal, TextInput, TouchableOpacity,
 class DialogInput extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      inputModal: props.value || ''
-    }
+    this.state = {inputModal:''}
   }
   render(){
     let title = this.props.title || '';
     let hintInput = this.props.hintInput || '';
+    let value = this.props.value || '';
 
     let textProps = this.props.textInputProps || null;
     let modalStyleProps = this.props.modalStyle || {};
@@ -43,7 +42,7 @@ class DialogInput extends React.Component{
                 underlineColorAndroid='transparent'
                 placeholder={hintInput}
                 onChangeText={(inputModal) => this.setState({inputModal})}
-		value={this.state.inputModal}
+		            value={this.state.inputModal}
                 />
             </View>
             <View style={styles.btn_container}>
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
     ...Platform.select({
       ios: {
-        backgroundColor:'rgba(220,220,220, 0.6)',
+        backgroundColor:'#E3E6E7',
         borderRadius: 10,
         minWidth: 300,
       },
@@ -198,11 +197,11 @@ const styles = StyleSheet.create({
     }),
   },
   btn_modal_left:{
-    fontWeight: 'bold',
     ...Platform.select({
+      fontWeight: "bold",
       ios: {
         fontSize:18,
-        color:'#2699FF',
+        color:'#408AE2',
         textAlign:'center',
         borderRightWidth: 5,
         borderColor: '#B0B0B0',
@@ -218,11 +217,11 @@ const styles = StyleSheet.create({
     }),
   },
   btn_modal_right:{
-    fontWeight: 'bold',
     ...Platform.select({
+      fontWeight: "bold",
       ios: {
         fontSize:18,
-        color:'#2699FF',
+        color:'#408AE2',
         textAlign:'center',
         padding: 10,
       },
