@@ -9,6 +9,11 @@ class DialogInput extends React.Component{
       inputModal: props.value || ''
     }
   }
+
+  componentDidMount() {
+    this.setState({inputModal:this.props.value || ''});
+  }
+
   render(){
     let title = this.props.title || '';
     let hintInput = this.props.hintInput || '';
@@ -21,8 +26,6 @@ class DialogInput extends React.Component{
     var submitText = this.props.submitText || 'Submit';
     cancelText = (Platform.OS === 'ios')? cancelText:cancelText.toUpperCase();
     submitText = (Platform.OS === 'ios')? submitText:submitText.toUpperCase();
-
-    this.setState({inputModal:this.props.value || ''});
 
     return(
       <Modal
