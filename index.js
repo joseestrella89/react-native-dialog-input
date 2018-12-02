@@ -10,7 +10,7 @@ class DialogInput extends React.Component{
     }
   }
 
-  onOpen() {
+  onShow() {
     this.setState({inputModal:this.props.value || ''});
   }
 
@@ -37,7 +37,7 @@ class DialogInput extends React.Component{
         animationType={animationType}
         transparent={true}
         visible={this.props.isDialogVisible}
-        onOpen={() => {this.onOpen();}}
+        onShow={() => {this.onShow();}}
       	onRequestClose={() => {this.onClose();}}>
         <View style={[styles.container, {...modalStyleProps}]}>
           <View style={[styles.modal_container, {...dialogStyleProps}]}>
