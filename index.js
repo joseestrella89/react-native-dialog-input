@@ -10,8 +10,13 @@ class DialogInput extends React.Component{
     }
   }
 
-  componentDidMount() {
+  onOpen() {
     this.setState({inputModal:this.props.value || ''});
+  }
+
+  onClose() {
+    this.props.closeDialog();
+    this.setState({inputModal:''});
   }
 
   render(){
@@ -32,9 +37,8 @@ class DialogInput extends React.Component{
         animationType={animationType}
         transparent={true}
         visible={this.props.isDialogVisible}
-      	onRequestClose={() => {
-      	  this.props.closeDialog();
-      	}}>
+        onOpen={() => {this.onOpen();}}
+      	onRequestClose={() => {this.onClose();}}>
         <View style={[styles.container, {...modalStyleProps}]}>
           <View style={[styles.modal_container, {...dialogStyleProps}]}>
             <View style={styles.modal_body}>
@@ -55,9 +59,7 @@ class DialogInput extends React.Component{
             </View>
             <View style={styles.btn_container}>
               <TouchableOpacity style={styles.touch_modal}
-                onPress={() => {
-                  this.props.closeDialog();
-                }}>
+                onPress={() => {this.onClose();}}>
                 <Text style={styles.btn_modal_left}>{cancelText}</Text>
               </TouchableOpacity>
 	            <View style={styles.divider_btn}></View>
