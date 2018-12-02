@@ -16,14 +16,17 @@ class DialogInput extends React.Component{
     let textProps = this.props.textInputProps || null;
     let modalStyleProps = this.props.modalStyle || {};
     let dialogStyleProps = this.props.dialogStyle || {};
+    let animationType = this.props.animationType || 'fade';
     var cancelText = this.props.cancelText || 'Cancel';
     var submitText = this.props.submitText || 'Submit';
     cancelText = (Platform.OS === 'ios')? cancelText:cancelText.toUpperCase();
     submitText = (Platform.OS === 'ios')? submitText:submitText.toUpperCase();
 
+    this.setState({inputModal:this.props.value || ''});
+
     return(
       <Modal
-        animationType="fade"
+        animationType={animationType}
         transparent={true}
         visible={this.props.isDialogVisible}
       	onRequestClose={() => {
@@ -43,7 +46,8 @@ class DialogInput extends React.Component{
                 underlineColorAndroid='transparent'
                 placeholder={hintInput}
                 onChangeText={(inputModal) => this.setState({inputModal})}
-		value={this.state.inputModal}
+		            value={this.state.inputModal}
+                autoFocus={(textProps && textProps.autoFocus===false)?false:true}
                 />
             </View>
             <View style={styles.btn_container}>
