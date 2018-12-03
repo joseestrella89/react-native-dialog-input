@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Modal, TextInput, TouchableOpacity,
-          ActivityIndicator, Platform } from 'react-native';
+         Platform } from 'react-native';
 
 class DialogInput extends React.Component{
   constructor(props){

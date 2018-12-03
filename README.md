@@ -9,7 +9,7 @@ Dialog with input for React Native on iOS and Android.
 ## Setup
 
 ```bash
-npm install --save react-native-dialog-input@github:ithustle/react-native-dialog-input
+npm install --save react-native-dialog-input
 ```
 
 ## Usage
