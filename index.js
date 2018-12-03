@@ -5,13 +5,17 @@ import { StyleSheet, Text, View, Modal, TextInput, TouchableOpacity,
 class DialogInput extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-      inputModal: props.value || ''
-    }
+    this.state = { inputModal: '', openning: true }
   }
+
   render(){
     let title = this.props.title || '';
     let hintInput = this.props.hintInput || '';
+    let value = null;
+
+    if (!this.state.openning) {
+      value = this.state.inputModal
+    }
 
     let textProps = this.props.textInputProps || null;
     let modalStyleProps = this.props.modalStyle || {};
@@ -27,41 +31,48 @@ class DialogInput extends React.Component{
         transparent={true}
         visible={this.props.isDialogVisible}
       	onRequestClose={() => {
-      	  this.props.closeDialog();
+          this.props.closeDialog();
+          this.state = { inputModal: '' };
       	}}>
-        <View style={[styles.container, {...modalStyleProps}]}>
-          <View style={[styles.modal_container, {...dialogStyleProps}]}>
-            <View style={styles.modal_body}>
-              <Text style={styles.title_modal}>{title}</Text>
-              <Text style={[this.props.message ? styles.message_modal : {height:0} ]}>{this.props.message}</Text>
-              <TextInput style={styles.input_container}
-                autoCorrect={(textProps && textProps.autoCorrect==false)?false:true}
-                autoCapitalize={(textProps && textProps.autoCapitalize)?textProps.autoCapitalize:'none'}
-                clearButtonMode={(textProps && textProps.clearButtonMode)?textProps.clearButtonMode:'never'}
-                clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
-                keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
-                underlineColorAndroid='transparent'
-                placeholder={hintInput}
-                onChangeText={(inputModal) => this.setState({inputModal})}
-		value={this.state.inputModal}
-                />
+        <View style={[styles.container, {...modalStyleProps}]}  >
+          <TouchableOpacity style={styles.container} activeOpacity={1} onPress={() => { this.props.closeDialog(); this.setState({ openning: true })}} >
+            <View style={[styles.modal_container, {...dialogStyleProps}]} >
+              <View style={styles.modal_body} >
+                <Text style={styles.title_modal}>{title}</Text>
+                <Text style={[this.props.message ? styles.message_modal : {height:0} ]}>{this.props.message}</Text>
+                <TextInput style={styles.input_container}
+                  autoCorrect={(textProps && textProps.autoCorrect==false)?false:true}
+                  autoCapitalize={(textProps && textProps.autoCapitalize)?textProps.autoCapitalize:'none'}
+                  clearButtonMode={(textProps && textProps.clearButtonMode)?textProps.clearButtonMode:'never'}
+                  clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
+                  keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
+                  autoFocus={true}
+                  onKeyPress={() => this.setState({ openning: false })}
+                  underlineColorAndroid='transparent'
+                  placeholder={hintInput}
+                  onChangeText={(inputModal) => this.setState({inputModal})}
+                  value={value}
+                  />
+              </View>
+              <View style={styles.btn_container}>
+                <TouchableOpacity style={styles.touch_modal}
+                  onPress={() => {
+                    this.props.closeDialog();
+                    this.setState({ openning: true })
+                  }}>
+                  <Text style={styles.btn_modal_left}>{cancelText}</Text>
+                </TouchableOpacity>
+                <View style={styles.divider_btn}></View>
+                <TouchableOpacity  style={styles.touch_modal}
+                  onPress={() => {
+                    this.props.submitInput(this.state.inputModal);
+                    this.setState({ openning: true })
+                  }}>
+                  <Text style={styles.btn_modal_right}>{submitText}</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-            <View style={styles.btn_container}>
-              <TouchableOpacity style={styles.touch_modal}
-                onPress={() => {
-                  this.props.closeDialog();
-                }}>
-                <Text style={styles.btn_modal_left}>{cancelText}</Text>
-              </TouchableOpacity>
-	            <View style={styles.divider_btn}></View>
-              <TouchableOpacity  style={styles.touch_modal}
-                onPress={() => {
-                  this.props.submitInput(this.state.inputModal);
-                }}>
-                <Text style={styles.btn_modal_right}>{submitText}</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          </TouchableOpacity>
         </View>
       </Modal>
     );
@@ -70,6 +81,8 @@ class DialogInput extends React.Component{
 const styles = StyleSheet.create({
   container:{
     flex:1,
+    width: '100%',
+    height: '100%',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -84,7 +97,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
     ...Platform.select({
       ios: {
-        backgroundColor:'rgba(220,220,220, 0.6)',
+        backgroundColor:'#E3E6E7',
         borderRadius: 10,
         minWidth: 300,
       },
@@ -198,11 +211,11 @@ const styles = StyleSheet.create({
     }),
   },
   btn_modal_left:{
-    fontWeight: 'bold',
     ...Platform.select({
+      fontWeight: "bold",
       ios: {
         fontSize:18,
-        color:'#2699FF',
+        color:'#408AE2',
         textAlign:'center',
         borderRightWidth: 5,
         borderColor: '#B0B0B0',
@@ -218,11 +231,11 @@ const styles = StyleSheet.create({
     }),
   },
   btn_modal_right:{
-    fontWeight: 'bold',
     ...Platform.select({
+      fontWeight: "bold",
       ios: {
         fontSize:18,
-        color:'#2699FF',
+        color:'#408AE2',
         textAlign:'center',
         padding: 10,
       },
