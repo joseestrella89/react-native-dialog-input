@@ -34,6 +34,11 @@ import DialogInput from 'react-native-dialog-input';
  title                 | Title to show in the DialogInput            |   String (OPTIONAL)
  message               | Message to show in the DialogInput          |   String (OPTIONAL)
  hintInput             | Text hint to show in the TextInput          |   String (OPTIONAL)
+ textInputProps        | Additional properties to add to the TextInput in the form:<BR> `textInputProps={{autoCorrect:false}}`  Currently supports:<BR>autoCorrect<BR>autoCapitalize<BR>clearButtonMode<BR>clearTextOnFocus <BR>keyboardType          |    Object (OPTIONAL)
+modalStyle   | Styles for the blocking view behind the DialogInput             |   Object (OPTIONAL)
+dialogStyle             | Styles for the DialogInput main view                        |   Object (OPTIONAL)
+cancelText             | Replacement text for the Cancel button      |   String (OPTIONAL)
+submitText             | Replacement text for the Submit button      |   String (OPTIONAL)
 
 ## Methods
 
