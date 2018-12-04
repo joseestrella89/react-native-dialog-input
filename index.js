@@ -38,7 +38,7 @@ class DialogInput extends React.Component{
         transparent={true}
         visible={this.props.isDialogVisible}
         onShow={() => {this.onShow();}}
-      	onRequestClose={() => {this.onClose();}}>
+        onRequestClose={() => {this.onClose();}}>
         <View style={[styles.container, {...modalStyleProps}]}>
           <View style={[styles.modal_container, {...dialogStyleProps}]}>
             <View style={styles.modal_body}>
@@ -53,12 +53,13 @@ class DialogInput extends React.Component{
                 underlineColorAndroid='transparent'
                 placeholder={hintInput}
                 onChangeText={(inputModal) => this.setState({inputModal})}
-		            value={this.state.inputModal}
+                value={this.state.inputModal}
                 autoFocus={(textProps && textProps.autoFocus===false)?false:true}
                 />
             </View>
             <View style={styles.btn_container}>
-              <TouchableOpacity style={styles.touch_modal}
+              <TouchableOpacity
+                style={styles.touch_modal}
                 onPress={() => {this.onClose();}}>
                 <Text style={styles.btn_modal_left}>{cancelText}</Text>
               </TouchableOpacity>
@@ -79,6 +80,8 @@ class DialogInput extends React.Component{
 const styles = StyleSheet.create({
   container:{
     flex:1,
+    width: '100%',
+    height: '100%',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -93,7 +96,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
     ...Platform.select({
       ios: {
-        backgroundColor:'rgba(220,220,220, 0.6)',
+        backgroundColor:'#E3E6E7',
         borderRadius: 10,
         minWidth: 300,
       },
@@ -207,11 +210,11 @@ const styles = StyleSheet.create({
     }),
   },
   btn_modal_left:{
-    fontWeight: 'bold',
     ...Platform.select({
+      fontWeight: "bold",
       ios: {
         fontSize:18,
-        color:'#2699FF',
+        color:'#408AE2',
         textAlign:'center',
         borderRightWidth: 5,
         borderColor: '#B0B0B0',
@@ -227,11 +230,11 @@ const styles = StyleSheet.create({
     }),
   },
   btn_modal_right:{
-    fontWeight: 'bold',
     ...Platform.select({
+      fontWeight: "bold",
       ios: {
         fontSize:18,
-        color:'#2699FF',
+        color:'#408AE2',
         textAlign:'center',
         padding: 10,
       },
