@@ -35,7 +35,7 @@ class DialogInput extends React.Component{
           this.state = { inputModal: '' };
       	}}>
         <View style={[styles.container, {...modalStyleProps}]}  >
-          <TouchableOpacity style={styles.container} activeOpacity={1} onPress={() => { this.props.closeDialog(); this.setState({ openning: true })}} >
+          <TouchableOpacity style={styles.container} activeOpacity={1} onPress={() => { this.props.closeDialog(); this.setState({ openning: true, inputModal:'' })}} >
             <View style={[styles.modal_container, {...dialogStyleProps}]} >
               <View style={styles.modal_body} >
                 <Text style={styles.title_modal}>{title}</Text>
@@ -58,7 +58,7 @@ class DialogInput extends React.Component{
                 <TouchableOpacity style={styles.touch_modal}
                   onPress={() => {
                     this.props.closeDialog();
-                    this.setState({ openning: true })
+                    this.setState({ openning: true, inputModal:'' })
                   }}>
                   <Text style={styles.btn_modal_left}>{cancelText}</Text>
                 </TouchableOpacity>
