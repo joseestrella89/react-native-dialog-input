@@ -11,10 +11,11 @@ class DialogInput extends React.Component{
   render(){
     let title = this.props.title || '';
     let hintInput = this.props.hintInput || '';
-    let value = null;
-
+    let value = '';
     if (!this.state.openning) {
-      value = this.state.inputModal
+      value = this.state.inputModal;
+    }else{
+      value = this.props.initValueTextInput ? this.props.initValueTextInput : '';
     }
 
     let textProps = this.props.textInputProps || null;
@@ -32,10 +33,10 @@ class DialogInput extends React.Component{
         visible={this.props.isDialogVisible}
       	onRequestClose={() => {
           this.props.closeDialog();
-          this.state = { inputModal: '' };
+          this.setState({ inputModal: '' });
       	}}>
         <View style={[styles.container, {...modalStyleProps}]}  >
-          <TouchableOpacity style={styles.container} activeOpacity={1} onPress={() => { this.props.closeDialog(); this.setState({ openning: true })}} >
+          <TouchableOpacity style={styles.container} activeOpacity={1} onPress={() => { this.props.closeDialog(); this.setState({ inputModal: '',openning: true })}} >
             <View style={[styles.modal_container, {...dialogStyleProps}]} >
               <View style={styles.modal_body} >
                 <Text style={styles.title_modal}>{title}</Text>
@@ -58,15 +59,15 @@ class DialogInput extends React.Component{
                 <TouchableOpacity style={styles.touch_modal}
                   onPress={() => {
                     this.props.closeDialog();
-                    this.setState({ openning: true })
+                    this.setState({ inputModal: '',openning: true })
                   }}>
                   <Text style={styles.btn_modal_left}>{cancelText}</Text>
                 </TouchableOpacity>
                 <View style={styles.divider_btn}></View>
                 <TouchableOpacity  style={styles.touch_modal}
                   onPress={() => {
-                    this.props.submitInput(this.state.inputModal);
-                    this.setState({ openning: true })
+                    this.props.submitInput(value);
+                    this.setState({ inputModal: '',openning: true })
                   }}>
                   <Text style={styles.btn_modal_right}>{submitText}</Text>
                 </TouchableOpacity>
