@@ -5,7 +5,11 @@ import { StyleSheet, Text, View, Modal, TextInput, TouchableOpacity,
 class DialogInput extends React.Component{
   constructor(props){
     super(props);
-    this.state = { inputModal: '', openning: true }
+    this.state = { 
+      inputModal: '', 
+      openning: true,
+      maxLength: this.props.inputMaxLength || 40, 
+    }
   }
 
   render(){
@@ -41,7 +45,7 @@ class DialogInput extends React.Component{
               <View style={styles.modal_body} >
                 <Text style={styles.title_modal}>{title}</Text>
                 <Text style={[this.props.message ? styles.message_modal : {height:0} ]}>{this.props.message}</Text>
-                <TextInput style={styles.input_container}
+                <TextInput style={this.props.inputStyle}
                   autoCorrect={(textProps && textProps.autoCorrect==false)?false:true}
                   autoCapitalize={(textProps && textProps.autoCapitalize)?textProps.autoCapitalize:'none'}
                   clearButtonMode={(textProps && textProps.clearButtonMode)?textProps.clearButtonMode:'never'}
@@ -53,6 +57,8 @@ class DialogInput extends React.Component{
                   placeholder={hintInput}
                   onChangeText={(inputModal) => this.setState({inputModal})}
                   value={value}
+                  secureTextEntry={this.props.inputSecureTextEntry}
+                  maxLength={this.state.maxLength}
                   />
               </View>
               <View style={styles.btn_container}>
@@ -61,7 +67,7 @@ class DialogInput extends React.Component{
                     this.props.closeDialog();
                     this.setState({ inputModal: '',openning: true })
                   }}>
-                  <Text style={styles.btn_modal_left}>{cancelText}</Text>
+                  <Text style={this.props.cancelStyle}>{cancelText}</Text>
                 </TouchableOpacity>
                 <View style={styles.divider_btn}></View>
                 <TouchableOpacity  style={styles.touch_modal}
@@ -69,7 +75,7 @@ class DialogInput extends React.Component{
                     this.props.submitInput(value);
                     this.setState({ inputModal: '',openning: true })
                   }}>
-                  <Text style={styles.btn_modal_right}>{submitText}</Text>
+                  <Text style={this.props.submitStyle}>{submitText}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -147,29 +153,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  input_container:{
-    textAlign:'left',
-    fontSize: 16,
-    color: 'rgba(0,0,0,0.54)',
-    ...Platform.select({
-      ios: {
-        backgroundColor: 'white',
-        borderRadius: 5,
-        paddingTop: 5,
-	      borderWidth: 1,
-        borderColor: '#B0B0B0',
-        paddingBottom: 5,
-        paddingLeft: 10,
-        marginBottom: 15,
-        marginTop: 10,
-      },
-      android: {
-        marginTop: 8,
-        borderBottomWidth: 2,
-        borderColor: '#009688',
-      },
-    }),
-  },
   btn_container:{
     flex: 1,
     flexDirection: 'row',
@@ -209,42 +192,6 @@ const styles = StyleSheet.create({
         minWidth: 64,
         height: 36,
       }
-    }),
-  },
-  btn_modal_left:{
-    ...Platform.select({
-      fontWeight: "bold",
-      ios: {
-        fontSize:18,
-        color:'#408AE2',
-        textAlign:'center',
-        borderRightWidth: 5,
-        borderColor: '#B0B0B0',
-        padding: 10,
-	      height: 48,
-	      maxHeight: 48,
-      },
-      android: {
-        textAlign:'right',
-        color:'#009688',
-        padding: 8
-      },
-    }),
-  },
-  btn_modal_right:{
-    ...Platform.select({
-      fontWeight: "bold",
-      ios: {
-        fontSize:18,
-        color:'#408AE2',
-        textAlign:'center',
-        padding: 10,
-      },
-      android: {
-        textAlign:'right',
-        color:'#009688',
-        padding: 8
-      },
     }),
   },
 });
