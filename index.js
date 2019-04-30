@@ -51,7 +51,7 @@ class DialogInput extends React.Component{
                   onKeyPress={() => this.setState({ openning: false })}
                   underlineColorAndroid='transparent'
                   placeholder={hintInput}
-                  onChangeText={(inputModal) => this.setState({inputModal})}
+                  onChangeText={(inputModal) => this.setState({inputModal, openning: false})}
                   value={value}
                   />
               </View>
