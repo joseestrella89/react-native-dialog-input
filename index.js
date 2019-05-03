@@ -48,6 +48,7 @@ class DialogInput extends React.Component{
                   clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
                   keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
                   autoFocus={true}
+                  secureTextEntry={(textProps && textProps.secureTextEntry)?textProps.secureTextEntry:false}
                   onKeyPress={() => this.setState({ openning: false })}
                   underlineColorAndroid='transparent'
                   placeholder={hintInput}
