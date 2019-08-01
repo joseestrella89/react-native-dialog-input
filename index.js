@@ -108,6 +108,12 @@ const styles = StyleSheet.create({
         minWidth: 280,
         borderRadius: 5,
       },
+      windows: {
+        backgroundColor:'#fff',
+        elevation: 24,
+        minWidth: 280,
+        borderRadius: 5,
+      },
     }),
   },
   modal_body:{
@@ -116,6 +122,9 @@ const styles = StyleSheet.create({
         padding: 10,
       },
       android: {
+        padding: 24,
+      },
+      windows: {
         padding: 24,
       },
     }),
@@ -132,6 +141,9 @@ const styles = StyleSheet.create({
       android: {
         textAlign:'left',
       },
+      windows: {
+        textAlign:'left',
+      },
     }),
   },
   message_modal:{
@@ -142,6 +154,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
       },
       android: {
+        textAlign:'left',
+        marginTop: 20
+      },
+      windows: {
         textAlign:'left',
         marginTop: 20
       },
@@ -168,6 +184,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderColor: '#009688',
       },
+      windows: {
+        marginTop: 8,
+        borderBottomWidth: 2,
+        borderColor: '#009688',
+      },
     }),
   },
   btn_container:{
@@ -185,6 +206,12 @@ const styles = StyleSheet.create({
         maxHeight: 52,
         paddingTop: 8,
         paddingBottom: 8,
+      },
+      windows:{
+        alignSelf: 'flex-end',
+        maxHeight: 52,
+        paddingTop: 8,
+        paddingBottom: 8,
       }
     }),
   },
@@ -197,6 +224,9 @@ const styles = StyleSheet.create({
       android:{
 	      width: 0
       },
+      windows:{
+	      width: 0
+      },
     }),
   },
   touch_modal:{
@@ -205,6 +235,11 @@ const styles = StyleSheet.create({
         flex: 1,
       },
       android:{
+        paddingRight: 8,
+        minWidth: 64,
+        height: 36,
+      },
+      windows:{
         paddingRight: 8,
         minWidth: 64,
         height: 36,
@@ -229,6 +264,11 @@ const styles = StyleSheet.create({
         color:'#009688',
         padding: 8
       },
+      windows: {
+        textAlign:'right',
+        color:'#009688',
+        padding: 8
+      },
     }),
   },
   btn_modal_right:{
@@ -241,6 +281,11 @@ const styles = StyleSheet.create({
         padding: 10,
       },
       android: {
+        textAlign:'right',
+        color:'#009688',
+        padding: 8
+      },
+      windows: {
         textAlign:'right',
         color:'#009688',
         padding: 8
