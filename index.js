@@ -31,10 +31,10 @@ class DialogInput extends React.Component{
         animationType="fade"
         transparent={true}
         visible={this.props.isDialogVisible}
-      	onRequestClose={() => {
+        onRequestClose={() => {
           this.props.closeDialog();
           this.setState({ inputModal: '' });
-      	}}>
+        }}>
         <View style={[styles.container, {...modalStyleProps}]}  >
           <TouchableOpacity style={styles.container} activeOpacity={1} onPress={() => { this.props.closeDialog(); this.setState({ inputModal: '',openning: true })}} >
             <View style={[styles.modal_container, {...dialogStyleProps}]} >
@@ -47,13 +47,13 @@ class DialogInput extends React.Component{
                   clearButtonMode={(textProps && textProps.clearButtonMode)?textProps.clearButtonMode:'never'}
                   clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
                   keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
+                  autoFocus={true}
                   secureTextEntry={(textProps && textProps.secureTextEntry)?textProps.secureTextEntry:false}
                   maxLength={(textProps && textProps.maxLength > 0)?textProps.maxLength:null}
-                  autoFocus={true}
                   onKeyPress={() => this.setState({ openning: false })}
                   underlineColorAndroid='transparent'
                   placeholder={hintInput}
-                  onChangeText={(inputModal) => this.setState({inputModal})}
+                  onChangeText={(inputModal) => this.setState({ inputModal, openning: false })}
                   value={value}
                   />
               </View>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     ...Platform.select({
       android:{
-        backgroundColor: 'rgba(0,0,0,0.62)'
+        backgroundColor: 'rgba(0,0,0,0)'
       }
     }),
   },
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 5,
         paddingTop: 5,
-	      borderWidth: 1,
+        borderWidth: 1,
         borderColor: '#B0B0B0',
         paddingBottom: 5,
         paddingLeft: 10,
@@ -193,11 +193,11 @@ const styles = StyleSheet.create({
   divider_btn:{
     ...Platform.select({
       ios:{
-      	width: 1,
+        width: 1,
         backgroundColor: '#B0B0B0',
       },
       android:{
-	      width: 0
+        width: 0
       },
     }),
   },
@@ -223,8 +223,8 @@ const styles = StyleSheet.create({
         borderRightWidth: 5,
         borderColor: '#B0B0B0',
         padding: 10,
-	      height: 48,
-	      maxHeight: 48,
+        height: 48,
+        maxHeight: 48,
       },
       android: {
         textAlign:'right',
