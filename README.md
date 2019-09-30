@@ -40,7 +40,7 @@ modalStyle   | Styles for the blocking view behind the DialogInput             |
 dialogStyle             | Styles for the DialogInput main view                        |   Object (OPTIONAL)
 cancelText             | Replacement text for the Cancel button      |   String (OPTIONAL)
 submitText             | Replacement text for the Submit button      |   String (OPTIONAL)
-
+keyboardMargin          | When open keyboard add margin      |   number (OPTIONAL)
 ## Methods
 
  name           | description                                        | returns
