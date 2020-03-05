@@ -21,6 +21,7 @@ class DialogInput extends React.Component{
     let textProps = this.props.textInputProps || null;
     let modalStyleProps = this.props.modalStyle || {};
     let dialogStyleProps = this.props.dialogStyle || {};
+    let placeholderTextColor = this.props.placeholderTextColor
     var cancelText = this.props.cancelText || 'Cancel';
     var submitText = this.props.submitText || 'Submit';
     cancelText = (Platform.OS === 'ios')? cancelText:cancelText.toUpperCase();
@@ -51,6 +52,7 @@ class DialogInput extends React.Component{
                   onKeyPress={() => this.setState({ openning: false })}
                   underlineColorAndroid='transparent'
                   placeholder={hintInput}
+                  placeholderTextColor={placeholderTextColor}
                   onChangeText={(inputModal) => this.setState({inputModal})}
                   value={value}
                   />
