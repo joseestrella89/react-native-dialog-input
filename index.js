@@ -5,22 +5,18 @@ import { StyleSheet, Text, View, Modal, TextInput, TouchableOpacity,
 class DialogInput extends React.Component{
   constructor(props){
     super(props);
-    this.state = { inputModal: '', openning: true }
+    this.state = { inputModal: props.initValueTextInput || `` }
   }
 
   render(){
     let title = this.props.title || '';
     let hintInput = this.props.hintInput || '';
-    let value = '';
-    if (!this.state.openning) {
-      value = this.state.inputModal;
-    }else{
-      value = this.props.initValueTextInput ? this.props.initValueTextInput : '';
-    }
+    let value = this.state.inputModal;
 
     let textProps = this.props.textInputProps || null;
     let modalStyleProps = this.props.modalStyle || {};
     let dialogStyleProps = this.props.dialogStyle || {};
+    let placeholderTextColor = this.props.placeholderTextColor
     var cancelText = this.props.cancelText || 'Cancel';
     var submitText = this.props.submitText || 'Submit';
     cancelText = (Platform.OS === 'ios')? cancelText:cancelText.toUpperCase();
@@ -48,9 +44,9 @@ class DialogInput extends React.Component{
                   clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
                   keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
                   autoFocus={true}
-                  onKeyPress={() => this.setState({ openning: false })}
                   underlineColorAndroid='transparent'
                   placeholder={hintInput}
+                  placeholderTextColor={placeholderTextColor}
                   onChangeText={(inputModal) => this.setState({inputModal})}
                   value={value}
                   />
@@ -59,7 +55,7 @@ class DialogInput extends React.Component{
                 <TouchableOpacity style={styles.touch_modal}
                   onPress={() => {
                     this.props.closeDialog();
-                    this.setState({ inputModal: '',openning: true })
+                    this.setState({ inputModal: this.props.initValueTextInput || '' })
                   }}>
                   <Text style={styles.btn_modal_left}>{cancelText}</Text>
                 </TouchableOpacity>
@@ -67,7 +63,7 @@ class DialogInput extends React.Component{
                 <TouchableOpacity  style={styles.touch_modal}
                   onPress={() => {
                     this.props.submitInput(value);
-                    this.setState({ inputModal: '',openning: true })
+                    this.setState({ inputModal: this.props.initValueTextInput || '' })
                   }}>
                   <Text style={styles.btn_modal_right}>{submitText}</Text>
                 </TouchableOpacity>
