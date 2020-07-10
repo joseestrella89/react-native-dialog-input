@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import {
   Modal,
   Platform,
@@ -9,10 +9,10 @@ import {
   View,
 } from 'react-native';
 
-class DialogInput extends React.Component{
+class DialogInput extends PureComponent{
   constructor(props){
     super(props);
-    this.state = { inputModal: '', openning: true };
+    this.state = { inputModal: props.initValueTextInput, openning: true };
   }
 
   handleOnRequestClose = () => {
@@ -25,7 +25,7 @@ class DialogInput extends React.Component{
   };
 
   handleOnChangeText = (inputModal) => {
-    this.setState({ inputModal });
+    this.setState({ inputModal, openning: false });
   };
 
   handleOnCloseDialog = () => {
@@ -34,7 +34,7 @@ class DialogInput extends React.Component{
   };
 
   handleSubmit = () => {
-    this.props.submitInput(value);
+    this.props.submitInput(this.state.inputModal);
     this.setState({ inputModal: '',openning: true });
   };
 
@@ -51,9 +51,10 @@ class DialogInput extends React.Component{
     const textProps = this.props.textInputProps || null;
     const modalStyleProps = this.props.modalStyle || {};
     const dialogStyleProps = this.props.dialogStyle || {};
+    const placeholderTextColor = this.props.placeholderTextColor
     const animationType = this.props.animationType || 'fade';
-    const cancelText = this.props.cancelText || 'Cancel';
-    const submitText = this.props.submitText || 'Submit';
+    let cancelText = this.props.cancelText || 'Cancel';
+    let submitText = this.props.submitText || 'Submit';
     cancelText = (Platform.OS === 'ios')? cancelText:cancelText.toUpperCase();
     submitText = (Platform.OS === 'ios')? submitText:submitText.toUpperCase();
 
@@ -76,10 +77,12 @@ class DialogInput extends React.Component{
                   clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
                   keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
                   secureTextEntry={(textProps && textProps.secureTextEntry)?textProps.secureTextEntry:false}
+                  maxLength={(textProps && textProps.maxLength > 0)?textProps.maxLength:null}
                   autoFocus={true}
                   onKeyPress={this.handleOnKeyPress}
                   underlineColorAndroid='transparent'
                   placeholder={hintInput}
+                  placeholderTextColor={placeholderTextColor}
                   onChangeText={this.handleOnChangeText}
                   value={value}
                   />
@@ -236,7 +239,7 @@ const styles = StyleSheet.create({
   },
   btn_modal_left:{
     ...Platform.select({
-      fontWeight: "bold",
+      fontWeight: 'bold',
       ios: {
         fontSize:18,
         color:'#408AE2',
@@ -256,7 +259,7 @@ const styles = StyleSheet.create({
   },
   btn_modal_right:{
     ...Platform.select({
-      fontWeight: "bold",
+      fontWeight: 'bold',
       ios: {
         fontSize:18,
         color:'#408AE2',
