@@ -75,6 +75,7 @@ class DialogInput extends React.Component{
                   clearButtonMode={(textProps && textProps.clearButtonMode)?textProps.clearButtonMode:'never'}
                   clearTextOnFocus={(textProps && textProps.clearTextOnFocus==true)?textProps.clearTextOnFocus:false}
                   keyboardType={(textProps && textProps.keyboardType)?textProps.keyboardType:'default'}
+                  secureTextEntry={(textProps && textProps.secureTextEntry)?textProps.secureTextEntry:false}
                   autoFocus={true}
                   onKeyPress={this.handleOnKeyPress}
                   underlineColorAndroid='transparent'
