@@ -1,6 +1,6 @@
 declare module 'react-native-dialog-input' {
   import { Component } from 'react';
-  import { StyleProp, ViewStyle } from 'react-native';
+  import { StyleProp, ViewStyle, TextInputProps } from 'react-native';
 
   interface Props {
     isDialogVisible: boolean;
@@ -8,7 +8,7 @@ declare module 'react-native-dialog-input' {
     message?: string;
     hintInput?: string;
     initValueTextInput?: string;
-    textInputProps?: AutoCorrectProps;
+    textInputProps?: TextInputProps;
     modalStyle?: StyleProp<ViewStyle>;
     dialogStyle?: StyleProp<ViewStyle>;
     textInputStyle?: StyleProp<ViewStyle>;
@@ -16,16 +16,6 @@ declare module 'react-native-dialog-input' {
     submitText?: string;
     submitInput: (inputText?: string) => void;
     closeDialog: () => void;
-  }
-
-  interface AutoCorrectProps {
-    autoCorrect?: boolean;
-    autoCapitalize?: boolean;
-    clearButtonMode?: boolean;
-    clearTextOnFocus?: boolean;
-    keyboardType?: boolean;
-    secureTextEntry?: boolean;
-    maxLength?: number;
   }
 
   export default class DialogInput extends Component<Props, {}> {}
