@@ -1,6 +1,6 @@
 {
   "name": "react-native-dialog-input",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Dialog with input for React Native on iOS and Android.",
   "main": "index.js",
   "scripts": {
